@@ -1,0 +1,471 @@
+# IVF Clinic Management System: End-to-End Architectural & Operational Plan
+# From Initial Enquiry to Baby Delivery, Pediatric Care, and Vaccination (Including Cycle Failures & Re-attempts)
+
+================================================================================
+PART 1: CORE MODULES OVERVIEW (BULLET POINTS)
+================================================================================
+
+* Module 01: Lead Management, Enquiry & Patient Relationship CRM
+* Module 02: Couple Onboarding, Biometrics, Legal KYC & ART Act Compliance
+* Module 03: Clinical Consultation, Infertility Workup & Diagnostic Testing (Couple Record)
+* Module 04: Treatment Protocol Formulation & Ovarian Stimulation Monitoring (Folliculometry)
+* Module 05: Oocyte Pick-Up (OPU), Andrology Lab & Semen Preparation
+* Module 06: Embryology Laboratory Information System (IVF/ICSI, Cleavage, Blastocyst & PGT)
+* Module 07: Embryo Transfer (ET) Management — Fresh ET & Frozen Embryo Transfer (FET)
+* Module 08: Luteal Phase Management & Early Pregnancy Testing (Beta-hCG & Viability Scans)
+* Module 09: Cycle Failure Analysis, Root Cause Workup & Re-attempt / Protocol Optimization
+* Module 10: Antenatal Care (ANC) & High-Risk Obstetric Monitoring (Post-Conception to Term)
+* Module 11: Labor Room, Delivery Documentation & Birth Registry (L&D Suite)
+* Module 12: Neonatal / Pediatric Care, Birth Milestones & Comprehensive Vaccination Scheduler
+* Module 13: Cryobank & Bio-Repository Management (Sperm, Oocyte, Embryo Storage & Liquid Nitrogen Tanks)
+* Module 14: Donor Registry & Surrogacy Protocol Management (ART Regulations Adherent)
+* Module 15: Fertility Pharmacy, Cold-Chain Tracking & Consumables Inventory
+* Module 16: Billing, Multi-Tier Treatment Packages, Installment Tracking & Financial Counseling
+* Module 17: Clinical Quality, ART Registry Reporting & Lab KPI Analytics
+* Module 18: Couple Interactive Portal & Mobile Application (Smart Injection Calendar & Push Alerts)
+* Module 19: Role-Based Access Control (RBAC), Security, HIPAA/GDPR Compliance & Audit Trail
+
+================================================================================
+PART 2: DETAILED MODULE-BY-MODULE SPECIFICATIONS & WORKFLOWS
+================================================================================
+
+--------------------------------------------------------------------------------
+MODULE 01: Lead Management, Enquiry & Patient Relationship CRM
+--------------------------------------------------------------------------------
+1. Purpose: Capture, nurture, and track initial couple enquiries from multiple touchpoints.
+2. Inflow Channels: Website webhooks, WhatsApp Business API, walk-in reception, call centers, and physician referrals.
+3. Key Functionality:
+   - Couple Lead Profiling: Husband & Wife names, age, duration of marriage, primary/secondary infertility history, contact information.
+   - Lead Status Stages: New Enquiry -> Contacted -> Preliminary Counseling Booked -> Seminar/Webinar Attended -> Initial Appointment Confirmed -> Dropped / Follow-up Needed.
+   - Smart Auto-Assignment: Route leads to dedicated financial/clinical fertility counselors based on language or location.
+   - Omnichannel Communication: Automated WhatsApp and SMS reminders for consultation dates, directions, and fasting/test guidelines.
+   - Conversion Analytics: Cost-per-lead, source-to-consultation conversion rate, and dropout reason tracking.
+
+--------------------------------------------------------------------------------
+MODULE 02: Couple Onboarding, Biometrics, Legal KYC & ART Act Compliance
+--------------------------------------------------------------------------------
+1. Purpose: Establish a single unified "Couple Profile" with stringent legal compliance and anti-mixup identity validation.
+2. Data Structure:
+   - Primary Entity: "Couple ID" linked to two individual profiles: Female Partner (UID-F) and Male Partner (UID-M).
+   - Relationship documentation (Marriage Certificate / Legal Declaration).
+   - Identity Verification: Government ID upload (Aadhaar/Passport/National ID) with biometric fingerprint/photo verification.
+3. Legal Consents & Statutory Compliance:
+   - Mandatory Electronic Consent Management: Signed digital informed consents for IVF, ICSI, Cryopreservation, PGT-A, Anesthesia, and Disposal/Donation of excess gametes.
+   - ART Regulatory Board Compliance (e.g., National Assisted Reproductive Technology Act standards): Mandatory declarations, maximum allowed donor usage, ethical restrictions.
+   - Witness and Counselor digital signatures with timestamp and tamper-proof PDF generation.
+
+--------------------------------------------------------------------------------
+MODULE 03: Clinical Consultation, Infertility Workup & Diagnostic Testing
+--------------------------------------------------------------------------------
+1. Purpose: In-depth clinical evaluation of both partners to diagnose male, female, or unexplained factors.
+2. Female Infertility Workup:
+   - History: Menstrual pattern, obstetrics history (gravida, para, abortions, ectopic), previous surgeries, laparoscopy history.
+   - Ovarian Reserve Testing: Day 2/3 FSH, LH, Estradiol (E2), Serum AMH (Anti-Müllerian Hormone), TSH, Prolactin.
+   - Pelvic Ultrasound: Baseline Antral Follicle Count (AFC), endometrial thickness, uterine anomalies, fibroids, adenomyosis, tubal patency (HSG / HyCoSy).
+3. Male Infertility Workup (Andrology Clinic):
+   - Detailed Semen Analysis (WHO guidelines): Volume, count, motility (progressive, non-progressive), morphology (Kruger strict criteria), vitality.
+   - Advanced Andrology: Sperm DNA Fragmentation Index (DFI), Semen culture, hormonal profile (FSH, LH, Testosterone).
+   - Surgical Sperm Retrieval evaluation (PESA / TESA / TESE / Micro-TESE) for azoospermic patients.
+4. Clinical Decision Support System (CDSS):
+   - Categorization: PCOS, Poor Ovarian Responder (POR/Bologna/POSEIDON criteria), Endometriosis (Stage I-IV), Male Factor, Recurrent Implantation Failure (RIF), Unexplained.
+
+--------------------------------------------------------------------------------
+MODULE 04: Treatment Protocol Formulation & Ovarian Stimulation Monitoring
+--------------------------------------------------------------------------------
+1. Purpose: Plan medication protocols, monitor follicle progression, and pinpoint trigger timing.
+2. Cycle Setup:
+   - Treatment Type: IUI, Self-IVF, Self-ICSI, Donor Oocyte IVF, Freeze-All Cycle, FET.
+   - Stimulation Protocol Choice:
+     * Antagonist Protocol (Fixed or Flexible)
+     * Long Agonist Protocol
+     * Ultra-short / Flare Protocol
+     * Progestin-primed Ovarian Stimulation (PPOS)
+     * Mild IVF / Natural Cycle IVF
+3. Folliculometry & Hormonal Tracking (Daily/Alternate Day Log):
+   - Right Ovary Follicles (size in mm for each follicle e.g. R1: 18mm, R2: 16mm, R3: 14mm...)
+   - Left Ovary Follicles (size in mm e.g. L1: 19mm, L2: 17mm...)
+   - Endometrial Assessment: Thickness (mm) and pattern (Trilaminar / Hyperechoic / Homogenous).
+   - Serum Hormones: E2 (Estradiol), P4 (Progesterone), LH.
+4. Dynamic Drug Prescription & Injection Tracker:
+   - Daily Gonadotropins (rFSH, hMG) dosage adjustments based on follicular growth curves.
+   - Antagonist introduction trigger (Follicle >= 14mm or E2 thresholds).
+5. Ovulation Trigger Planning:
+   - Dual Trigger / hCG Trigger / GnRH Agonist Trigger (Decapeptyl/Lupron) timing.
+   - Exact trigger timestamp countdown clock (OPU scheduled strictly 35 to 36 hours post-trigger).
+
+--------------------------------------------------------------------------------
+MODULE 05: Oocyte Pick-Up (OPU), Andrology Lab & Semen Preparation
+--------------------------------------------------------------------------------
+1. Purpose: Record surgical egg retrieval, husband/donor sperm collection, and wash preparation.
+2. OPU Procedure Documentation:
+   - Anesthesia notes, surgeon, embryologist present, needle gauge, aspiration pressure.
+   - Total Cumulus-Oocyte Complexes (COCs) retrieved.
+   - Follicular fluid inspection, flushing details, and immediate post-op patient recovery vitals.
+3. Sperm Sample Management:
+   - Fresh ejaculation / Thawed cryopreserved semen / PESA / TESA / Micro-TESE sample.
+   - Witnessing double-check (Barcode & RFID tags to prevent sample mix-up).
+   - Preparation Technique: Density Gradient Centrifugation, Swim-up, Microfluidic chip sorting (e.g., Zymōt).
+   - Post-wash parameters: Final count, progressive motility yield, and readiness for insemination.
+
+--------------------------------------------------------------------------------
+MODULE 06: Embryology Laboratory Information System (ELIS)
+--------------------------------------------------------------------------------
+1. Purpose: Maintain high-precision tracking of oocytes, fertilization, embryo development, and genetic testing.
+2. Denudation & Oocyte Maturity Grading:
+   - Stripping of cumulus cells post-OPU:
+     * Metaphase II (MII - mature, with 1st polar body) -> Ready for ICSI
+     * Metaphase I (MI - intermediate)
+     * Germinal Vesicle (GV - immature)
+     * Degenerated / Atretic
+3. Fertilization Insemination:
+   - Conventional IVF vs. ICSI vs. IMSI vs. PICSI.
+   - Day 1 Fertilization Check (16-18 hours post-insemination):
+     * 2PN (Normal diploid fertilization)
+     * 0PN (Unfertilized)
+     * 1PN / 3PN / Multi-PN (Abnormal fertilization)
+4. Cleavage Stage Development (Day 2 & Day 3):
+   - Cell count (2-cell, 4-cell, 8-cell), symmetry, fragmentation percentage (<10%, 10-25%, >25%), multinucleation.
+5. Extended Culture & Blastocyst Grading (Day 5 & Day 6 - Gardner System):
+   - Expansion stage: Grade 1 to 6 (Early, Cavitated, Expanded, Hatching, Hatched).
+   - Inner Cell Mass (ICM): A (Tightly packed), B (Loosely grouped), C (Very few cells).
+   - Trophectoderm (TE): A (Cohesive epithelium), B (Few cells), C (Sparse / degenerated).
+   - Example tag: Day 5 - Embryo #3 - 4AA.
+6. Advanced Technologies:
+   - Time-Lapse Imaging (EmbryoScope) metadata integration.
+   - Preimplantation Genetic Testing (PGT-A / PGT-M / PGT-SR): Biopsy log, trophectoderm cell sample shipment ID, genetic lab result import (Euploid / Aneuploid / Mosaic / Inconclusive).
+
+--------------------------------------------------------------------------------
+MODULE 07: Embryo Transfer (ET) Management (Fresh & Frozen)
+--------------------------------------------------------------------------------
+1. Fresh vs. Frozen Workflow:
+   - Fresh ET: Performed Day 3 or Day 5 in the stimulated cycle.
+   - Frozen Embryo Transfer (FET) Cycle:
+     * Endometrial Preparation: Hormone Replacement Therapy (HRT with Oral/Transdermal Estrogen) vs. Natural Cycle FET vs. Modified Natural.
+     * Endometrial monitoring: Reaching optimal thickness (>8mm, trilaminar) before Progesterone start date.
+     * ERA (Endometrial Receptivity Analysis) window-of-implantation timing sync.
+2. Embryo Thawing Log (for FET):
+   - Tank/Canister retrieval, thaw protocol verification, post-thaw survival rate (100%, 80%, degenerate).
+   - Pre-transfer re-expansion check.
+3. Transfer Procedure:
+   - Selection of embryo(s) for transfer (Single Embryo Transfer - SET encouraged to avoid multiples).
+   - Electronic witnessing verification at bedside (Doctor, Embryologist, Patient identity match).
+   - Catheter type, ultrasound guidance confirmation, easy/difficult transfer, catheter flush check (retained embryo check negative).
+
+--------------------------------------------------------------------------------
+MODULE 08: Luteal Phase Support & Early Pregnancy Outcome Tracking
+--------------------------------------------------------------------------------
+1. Luteal Phase Support Prescription:
+   - Micronized Progesterone (Vaginal pessary / gel / IM Depot / Oral Dydrogesterone).
+   - Adjuvant support: Low-dose aspirin, LMWH, Prednisolone, Vitamin D.
+2. Biochemical Pregnancy Evaluation:
+   - Serum Beta-hCG on Day 14 post-ET (or Day 16 post-D3 ET).
+   - Result classification:
+     * Negative (< 5 mIU/mL): Proceed to Cycle Failure Module.
+     * Borderline (5 - 25 mIU/mL): Retest in 48 hours.
+     * Positive (> 25 mIU/mL): Retest in 48 hours for exponential doubling (66%+ rise).
+3. Clinical Pregnancy Confirmation (Ultrasound Scans):
+   - 6th Week Gestational Scan: Identification of intrauterine gestational sac (GS), yolk sac, and exclusion of ectopic pregnancy.
+   - 7th-8th Week Viability Scan: Measurement of Crown-Rump Length (CRL) and fetal cardiac activity (heartbeat detection).
+
+--------------------------------------------------------------------------------
+MODULE 09: Cycle Failure Analysis, Root Cause Workup & Re-attempt Engine
+--------------------------------------------------------------------------------
+1. Purpose: Handle biochemical failure, implantation failure, early miscarriage, or poor lab yields, and systematically guide the couple into their next attempt.
+2. Failure Type Categorization:
+   - OPU Failure: Empty Follicle Syndrome (EFS), poor oocyte quality, low yield.
+   - Fertilization Failure: Total fertilization failure (TFF), cleavage arrest before Day 3.
+   - Blastulation Arrest: Failure to develop into usable blastocysts.
+   - Implantation Failure: Negative Beta-hCG after transfer of good-quality embryos.
+   - Biochemical Pregnancy Loss: Chemical pregnancy with falling hCG.
+   - Clinical Miscarriage: Blighted ovum, early fetal demise (< 12 weeks).
+3. Root Cause Analysis (RCA) & Multi-Disciplinary Review Board:
+   - Post-failure debriefing questionnaire and review checklist.
+   - Diagnostic recommendations triggered: Hysteroscopy (chronic endometritis, polyps, adhesions), Karyotyping of couple, Thrombophilia screen, Immunological panel, Endometrial Receptivity Array (ERA), Sperm DFI re-test.
+4. Re-Attempt Strategy & Protocol Adaptation Engine:
+   - Side-by-side comparison matrix: "Cycle 1 vs. Planned Cycle 2".
+   - Protocol modification suggestions:
+     * Switch from Agonist to Antagonist or vice-versa.
+     * Alter gonadotropin brand (add recombinant LH / Luveris).
+     * Add adjuvant therapies (Growth Hormone priming, DHEA, CoQ10, PRP therapy - Ovarian/Endometrial).
+     * Switch from IVF to ICSI/IMSI, or employ PICSI / Calcium Ionophore activation.
+     * Transition to Third-Party Reproduction (Donor Egg / Donor Sperm) when indicated.
+   - Financial credit transfer / Discounted Package rollover for second attempts.
+
+--------------------------------------------------------------------------------
+MODULE 10: Antenatal Care (ANC) & High-Risk Obstetric Monitoring
+--------------------------------------------------------------------------------
+1. Transition of Care: Smooth handover from Reproductive Endocrinologist to Obstetrician/Gynecologist at 10-12 weeks.
+2. ANC Clinical Tracking:
+   - Calculation of Expected Date of Delivery (EDD) calibrated from exact embryo transfer date and embryonic age.
+   - Trimester-by-Trimester Consultation Visits:
+     * 1st Trimester: First Trimester Screening (FTS), NT/NB Scan, Non-Invasive Prenatal Testing (NIPT).
+     * 2nd Trimester: Anomaly Scan (Level II / TIFFA scan), Cervical length monitoring (prevent cervical incompetence in IVF pregnancies), Fetal Echo.
+     * 3rd Trimester: Fetal Growth Scans, Color Doppler (Umbilical and Middle Cerebral Artery pulsatility), Biophysical Profile (BPP).
+   - High-Risk Screening & Alert Flags:
+     * Gestational Diabetes Mellitus (GDM - OGTT tracking).
+     * Pregnancy-Induced Hypertension (PIH / Preeclampsia - BP & urine protein logs).
+     * Multiple gestation monitoring (Twins / Triplets chorionicity & amnionicity).
+
+--------------------------------------------------------------------------------
+MODULE 11: Labor Room, Delivery Documentation & Birth Registry
+--------------------------------------------------------------------------------
+1. Admission & Labor Progression:
+   - Admission for elective LSCS (common in IVF/elderly primigravida) or spontaneous/induced labor.
+   - Digital Partogram: Cervical dilation, fetal descent, uterine contraction frequency, fetal heart rate monitoring (CTG).
+2. Delivery Recording:
+   - Mode of Delivery: Normal Vaginal Delivery, Assisted (Ventouse/Forceps), or Lower Segment Cesarean Section (LSCS).
+   - Surgical / Procedural details, delivering obstetrician, pediatrician on call, anesthesia team.
+   - Baby Arrival Record: Exact date and time of birth, gender, birth weight (grams), head circumference, length.
+   - Immediate Neonatal Evaluation: APGAR Score at 1 minute and 5 minutes, resuscitation needs.
+3. Multi-Fetal Delivery Splitting:
+   - Auto-spawns independent newborn records linked to the mother (e.g., Twin Baby 1, Twin Baby 2) with individual hospital numbers.
+4. Official Birth Documentation:
+   - Birth registration forms, municipal authority exports, and clinic graduation certificate.
+
+--------------------------------------------------------------------------------
+MODULE 12: Neonatal / Pediatric Care & Comprehensive Vaccination Scheduler
+--------------------------------------------------------------------------------
+1. Purpose: Provide pediatric care, growth milestone tracking, and a bulletproof immunization scheduler.
+2. Immediate Postnatal Newborn Care:
+   - Day 0 In-Hospital Immunization: BCG, Oral Polio Vaccine (OPV-0), Hepatitis B birth dose.
+   - Newborn Screening (NBS): Congenital Hypothyroidism, G6PD deficiency, Hearing Screening (OAE/BERA), Critical Congenital Heart Disease (CCHD) pulse oximetry.
+3. Automated Vaccination Scheduler:
+   - Standard Protocols Supported: Universal Immunization Programme (UIP), IAP (Indian Academy of Pediatrics), CDC/WHO immunization schedules.
+   - Vaccination Calendar Generation based on date of birth:
+     * 6 Weeks: DTwP/DTaP, IPV, Hep B, Hib, Rotavirus, PCV (Pneumococcal).
+     * 10 Weeks: 2nd dose of primary combination vaccines.
+     * 14 Weeks: 3rd dose of primary combination vaccines.
+     * 6 Months: Influenza (Flu), Typhoid Conjugate Vaccine.
+     * 9 Months: MMR (Measles, Mumps, Rubella), Meningococcal.
+     * 12 Months: Hepatitis A.
+     * 15-18 Months: MMR booster, PCV booster, Varicella (Chickenpox).
+     * 2 Years & Beyond: Annual flu, Typhoid booster, DTaP/IPV school boosters.
+4. Vaccination Operations:
+   - Vaccine vial batch/lot tracking, expiry verification, cold-chain temperature log.
+   - Automated SMS/WhatsApp immunization reminders sent to parents 7 days and 1 day prior to due date.
+   - Adverse Event Following Immunization (AEFI) logging.
+   - Downloadable/Printable International Standard Pediatric Immunization Certificate.
+5. Pediatric Growth & Milestone Tracker:
+   - WHO Growth Charts (Weight-for-age, Length/Height-for-age, Head Circumference-for-age percentiles).
+   - Milestone checklist: Motor, cognitive, speech, and social milestones up to 5 years.
+
+--------------------------------------------------------------------------------
+MODULE 13: Cryobank & Bio-Repository Management
+--------------------------------------------------------------------------------
+1. Purpose: Physical and digital traceability of high-value gametes and embryos with zero tolerance for confusion.
+2. Grid Storage Hierarchy:
+   - Cryo Room -> Liquid Nitrogen (LN2) Tank ID -> Canister Number -> Goblet ID -> Cane Number -> Straw/Vial ID -> Color Code.
+3. Specimen Types Tracked:
+   - Oocytes (Vitrified MII eggs).
+   - Sperm (Donor sperm vials, husband autologous sperm, testicular tissue fragments).
+   - Embryos (Day 3 cleavage embryos, Day 5/6 blastocysts).
+4. Cryo Operations:
+   - Vitrification / Freezing log with embryologist signature.
+   - Thawing / Disposal / Donation log.
+   - Automatic Storage Fee Expiry & Renewal Invoicing: Annual recurring maintenance invoices sent to couples with automated reminder cycles.
+   - Tank Temperature & LN2 level telemetry integration (IoT sensor alarms for temperature drop).
+
+--------------------------------------------------------------------------------
+MODULE 14: Third-Party Reproduction / Donor & Surrogacy Protocol
+--------------------------------------------------------------------------------
+1. Regulatory Adherence: Compliant with national ART laws governing altruistic vs. commercial procedures, donor anonymity, and registry limits.
+2. Oocyte Donor Registry:
+   - Donor KYC, physical characteristics (height, eye color, hair color, skin tone), blood group, education, karyotype, infectious disease screening (HIV, HBsAg, HCV, VDRL).
+   - Donation cycle history: Enforcing statutory limit on maximum lifetime donations.
+3. Sperm Bank Integration:
+   - Quarantine tracking (6-month quarantine and repeat infectious disease test before release).
+4. Gestational Surrogacy Management (Where permitted by law):
+   - Legal contracts, medical clearances, clinical monitoring of surrogate mother, and escrow payment milestone tracking.
+
+--------------------------------------------------------------------------------
+MODULE 15: Fertility Pharmacy, Cold-Chain & Consumables Inventory
+--------------------------------------------------------------------------------
+1. Specialized Fertility Formulary:
+   - Gonadotropins (Gonal-F, Puregon, Menopur), GnRH agonists/antagonists (Cetrotide, Decapeptyl), Progesterone varieties.
+2. Cold Chain Management (2°C - 8°C):
+   - Fridge temperature monitoring logs and alerts to prevent loss of sensitive protein hormones.
+3. Embryology Lab Consumables:
+   - Culture media (Sequential vs. Single-step media), oil overlay, aspiration needles, ICSI holding and injection pipettes, transfer catheters.
+   - Batch/Lot expiry warnings and QA certificates per batch.
+
+--------------------------------------------------------------------------------
+MODULE 16: Billing, Treatment Packages, Installments & Financing
+--------------------------------------------------------------------------------
+1. Package Configurator:
+   - Pre-packaged cycle costs (e.g., "Self-ICSI Package includes OPU, ICSI, and Day 3 ET; excludes freezing and pharmacy").
+   - Add-on services: PGT-A per embryo, IMSI, Zymōt, Laser Assisted Hatching (LAH), Embryo Glue.
+2. Multi-Stage Payment Installments:
+   - Milestone 1: Stimulation Start (Advance payment)
+   - Milestone 2: Day of OPU (Laboratory charge)
+   - Milestone 3: Day of Embryo Transfer (Procedure charge)
+   - Milestone 4: Cryopreservation & Maintenance (Annual storage charge)
+3. Financial Counseling & EMI Options:
+   - Healthcare zero-cost EMI partner integration, medical loan approvals.
+
+--------------------------------------------------------------------------------
+MODULE 17: Clinical Quality, ART Registry Reporting & Lab KPI Analytics
+--------------------------------------------------------------------------------
+1. National & International ART Registry Exports:
+   - One-click structured export for Government ART registries and ESHRE/SART benchmarks.
+2. Embryology Quality KPIs:
+   - Insemination-to-Fertilization Rate (Target: > 75-80% in ICSI).
+   - Day 3 Cleavage Rate (Target: > 95%).
+   - Day 5 Blastulation Rate (Target: > 45-60%).
+   - Post-Thaw Embryo Survival Rate (Target: > 90%).
+3. Clinical Outcomes:
+   - Clinical Pregnancy Rate (CPR) per transfer.
+   - Implantation Rate (IR).
+   - Multiple Gestation Rate (MGR) (Aiming for low rate via Single Embryo Transfer).
+   - Take-Home Baby Rate / Live Birth Rate (LBR) per started cycle and per transfer.
+
+--------------------------------------------------------------------------------
+MODULE 18: Couple Interactive Portal & Mobile Application
+--------------------------------------------------------------------------------
+1. Patient Empowered Features:
+   - Interactive Medication & Injection Timetable with alarm reminders and video injection guides.
+   - Live cycle tracking view: Follicular growth charts and lab report access.
+   - High-definition embryo photos / videos (post-blastocyst stage) approved by embryologist.
+   - Digital e-signing of consents without standing in queues.
+   - Pregnancy week-by-week tracker and child vaccination schedule with push notifications.
+
+--------------------------------------------------------------------------------
+MODULE 19: Security, Multi-Role Access Control (RBAC) & Audit Trails
+--------------------------------------------------------------------------------
+1. Role-Based Permissions:
+   - Roles: Super Admin, Clinic Director, Reproductive Endocrinologist, Embryologist, Andrologist, Fertility Nurse, Pharmacist, Billing Executive, Receptionist, Patient.
+2. Segregation of Duties:
+   - Embryologists only modify ELIS and Cryo records.
+   - Financial teams cannot edit clinical notes.
+   - Doctors sign off on treatment protocols and triggers.
+3. Security & Traceability:
+   - 21 CFR Part 11 and HIPAA compliant electronic audit logs: every edit, deletion, or viewing of medical records is timestamped with user ID and IP address.
+   - End-to-end encryption for sensitive patient and genetic data.
+
+================================================================================
+PART 3: LIFECYCLE STATE MACHINE (PATIENT JOURNEY)
+================================================================================
+
+[Lead / Enquiry]
+       │
+       ▼
+[Couple Registration & KYC] ───► [Legal Consent & ART Verification]
+       │
+       ▼
+[Clinical Workup & Diagnostics (Male + Female)]
+       │
+       ▼
+[Protocol Selection & Stimulation Starts]
+       │
+       ▼
+[Follicular Monitoring (Ultrasound + Hormones)]
+       │
+       ▼
+[Ovulation Trigger (35-36 hrs before OPU)]
+       │
+       ▼
+[OPU (Oocyte Pick-up)]  +  [Sperm Collection & Prep]
+       │                           │
+       └──────────────┬────────────┘
+                      ▼
+       [Embryology Lab: Insemination (IVF/ICSI)]
+                      │
+                      ▼
+       [Fertilization Check (Day 1: 2PN)]
+                      │
+                      ▼
+       [Embryo Culture: D3 Cleavage -> D5 Blastocyst] ──► [Optional PGT Biopsy / Cryopreservation]
+                      │
+                      ├─────────────────────────────────────────┐
+                      ▼                                         ▼
+            [Fresh Embryo Transfer]                   [Freeze-All / FET Cycle]
+                      │                                         │
+                      └───────────────────┬─────────────────────┘
+                                          ▼
+                             [Luteal Phase Support]
+                                          │
+                                          ▼
+                               [Serum Beta-hCG Test]
+                                          │
+                       ┌──────────────────┴──────────────────┐
+                       ▼                                     ▼
+                [NEGATIVE RESULT]                     [POSITIVE RESULT]
+                       │                                     │
+                       ▼                                     ▼
+             [Module 09: Failure Analysis]            [Viability Ultrasound (6-8 wks)]
+                       │                                     │
+         ┌─────────────┴─────────────┐                       ▼
+         ▼                           ▼              [Antenatal Care (ANC) Trimester 1, 2, 3]
+  [Root Cause Tests]         [Re-attempt Plan]               │
+(Hystero / DFI / ERA)    (New Protocol / Donor)              ▼
+         │                           │              [Labor & Delivery (LSCS / Normal)]
+         └─────────────┬─────────────┘                       │
+                       │ (Cycle 2, 3...)                     ▼
+                       └────────► [Stimulation Starts]  [Birth Registry & Baby Record Creation]
+                                                             │
+                                                             ▼
+                                                    [Neonatal Pediatric Care]
+                                                             │
+                                                             ▼
+                                                    [Vaccination Scheduler (0 to 18 yrs)]
+
+================================================================================
+PART 4: DATABASE SCHEMA & CORE DATA ENTITIES
+================================================================================
+
+1. couples (id, couple_code, wife_patient_id, husband_patient_id, marriage_date, counselor_id, status, created_at)
+2. patients (id, mrn, first_name, last_name, gender, dob, phone, email, blood_group, id_proof_type, id_proof_number, photo_url, created_at)
+3. consents (id, couple_id, cycle_id, consent_template_id, signed_by_wife, signed_by_husband, witness_name, signed_pdf_path, signed_at)
+4. ivf_cycles (id, couple_id, cycle_number, cycle_type, protocol_name, start_date, trigger_date, trigger_time, primary_doctor_id, status)
+5. follicular_scans (id, cycle_id, scan_date, day_of_cycle, endometrium_thickness, endometrium_pattern, right_ovary_follicles_json, left_ovary_follicles_json, e2_level, p4_level, lh_level, doctor_id)
+6. opu_records (id, cycle_id, opu_date, opu_time, oocytes_retrieved, complications, doctor_id, embryologist_id)
+7. semen_records (id, cycle_id, patient_id, collection_type, volume, count, motility, morphology, prep_method, post_wash_count, post_wash_motility)
+8. oocytes (id, opu_id, oocyte_code, maturity_stage [GV, MI, MII, DEG], insemination_method [IVF, ICSI], fertilized_status [0PN, 1PN, 2PN, MultiPN], disposition)
+9. embryos (id, oocyte_id, cycle_id, embryo_code, day3_cells, day3_grade, day5_expansion, day5_icm, day5_te, pgt_result, status [Fresh_ET, Frozen, Discarded])
+10. embryo_transfers (id, cycle_id, transfer_type [Fresh, FET], transfer_date, embryos_transferred_json, catheter_type, ease_of_transfer, doctor_id, embryologist_id)
+11. cycle_outcomes (id, cycle_id, betahcg_day14, betahcg_day16, clinical_pregnancy, sacs_count, heartbeat_detected, failure_reason, rca_notes, next_plan)
+12. cryo_storage (id, specimen_type [Sperm, Oocyte, Embryo], specimen_id, tank_id, canister_id, cane_id, goblet_id, straw_color, frozen_date, expiry_date, renewal_status)
+13. anc_records (id, couple_id, pregnancy_cycle_id, edd, gravidity, parity, high_risk_flags, obstetrician_id)
+14. deliveries (id, anc_record_id, delivery_date_time, mode_of_delivery, indication, maternal_complications, doctor_id)
+15. babies (id, delivery_id, baby_label [Baby 1, Baby 2], gender, birth_weight, apgar_1min, apgar_5min, pediatrician_id, pediatric_mrn)
+16. vaccination_schedules (id, baby_id, vaccine_id, milestone_name, due_date, administered_date, batch_number, manufacturer, administered_by, aefi_notes)
+
+================================================================================
+PART 5: IMPLEMENTATION PHASES & ROADMAP
+================================================================================
+
+Phase 1: Foundation, CRM & Clinical Diagnostics
+- Setup couple database, role-based access control, and electronic consent engine.
+- Implement patient enquiry CRM and pre-IVF infertility diagnostic workup.
+
+Phase 2: Stimulation, OPU & Embryology Lab Suite (ELIS)
+- Follicular monitoring (dynamic follicle input UI with endometrium tracking).
+- OPU and Semen preparation modules.
+- Complete Embryology Lab System: Insemination, fertilization, Day 3 & Day 5 grading, and Cryo-tank inventory.
+
+Phase 3: Embryo Transfer, Outcomes & Failure/Re-attempt Engine
+- Fresh ET and FET modules with electronic witnessing checklist.
+- Beta-hCG tracking, ultrasound viability confirmation.
+- Cycle failure classification, root-cause investigation forms, and comparative cycle 2 protocol generator.
+
+Phase 4: Obstetric Care (ANC), Delivery & Pediatric Immunization
+- Transition to ANC module with risk stratifications and trimester scans.
+- Labor room documentation, Cesarean/normal delivery registry.
+- Newborn registry and automated pediatric vaccination tracker with SMS/WhatsApp alerts.
+
+Phase 5: Financials, Patient App & Regulatory Compliance
+- Billing packages, installment tracking, and cryo-storage renewals.
+- Patient Mobile App (injection calendar, embryo photo viewer, consent e-sign).
+- National ART Registry reporting and lab KPI dashboards.
+
+
+
+================================================================================
+PART 6: IMPLEMENTATION STATUS IN LARAVEL (AURA IVF)
+================================================================================
+- [x] Left Sidebar Navigation with SVG line icons and real-time badge counts for all 11 modules.
+- [x] Full CRUD operations (Create, Read, Update, Delete) implemented across all clinical entities.
+- [x] Edit modals with pre-populated fields for Leads, Couples, Workup, Cycles, Scans, Labs, Transfers, Outcomes, Deliveries, Vaccines, and Cryobank.
+- [x] Local MySQL database `ivf` on 127.0.0.1:3306 connected with all tables and seeders.
+- [x] Pure light mode aesthetic: white background (#ffffff), crisp black typography (#000000), 1px borders, zero color distraction.
+- [x] Couple & Workup Registration modal and route enabled (+ Register New Couple & Workup button).
+- [x] Indian mobile formatting (+91 default, no country dropdown) standardized across all forms.
