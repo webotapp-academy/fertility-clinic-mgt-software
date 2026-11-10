@@ -414,133 +414,7 @@
                                         <div class="mono text-muted" style="font-size: 10.5px;">MRN: {{ $cpl->husband->mrn }} ({{ $cpl->husband->blood_group }})</div>
                                     @else
                                         <span class="text-muted">Donor Sperm Protocol</span>
-                                    
-
-        <!-- NEW COUPLE & WORKUP MODAL -->
-        <div class="modal-overlay" id="newCoupleModal">
-            <div class="modal-dialog">
-                <div class="modal-header">
-                    <div class="modal-title">Register New Couple & Infertility Workup</div>
-                    <button type="button" class="modal-close" onclick="closeModal('newCoupleModal')">&times;</button>
-                </div>
-                <form action="{{ route('ivf.couples.store') }}" method="POST">
-                    @csrf
-                    <div class="modal-body">
-                        <div style="font-weight: 700; font-size: 11.5px; font-family: var(--font-mono); border-bottom: 1px solid var(--border-strong); padding-bottom: 4px;">
-                            1. FEMALE PARTNER (WIFE)
-                        </div>
-                        <div class="form-grid" style="padding: 0;">
-                            <div class="form-group">
-                                <label class="form-label">First Name *</label>
-                                <input type="text" name="wife_first_name" class="form-control" placeholder="e.g. Priya" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Last Name *</label>
-                                <input type="text" name="wife_last_name" class="form-control" placeholder="e.g. Sharma" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Blood Group</label>
-                                <input type="text" name="wife_blood_group" class="form-control" placeholder="e.g. B Positive">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Mobile Number (India) *</label>
-                                <input type="tel" name="wife_phone" class="form-control" value="+91 " placeholder="+91 98765 43210" required>
-                            </div>
-                        </div>
-
-                        <div style="font-weight: 700; font-size: 11.5px; font-family: var(--font-mono); border-bottom: 1px solid var(--border-strong); padding-bottom: 4px; margin-top: 1rem;">
-                            2. MALE PARTNER (HUSBAND) / SPERM PROTOCOL
-                        </div>
-                        <div class="form-grid" style="padding: 0;">
-                            <div class="form-group">
-                                <label class="form-label">First Name</label>
-                                <input type="text" name="husband_first_name" class="form-control" placeholder="e.g. Rahul (Leave blank if donor)">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Last Name</label>
-                                <input type="text" name="husband_last_name" class="form-control" placeholder="e.g. Sharma">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Blood Group</label>
-                                <input type="text" name="husband_blood_group" class="form-control" placeholder="e.g. O Positive">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Mobile Number (India)</label>
-                                <input type="tel" name="husband_phone" class="form-control" value="+91 " placeholder="+91 98765 43210">
-                            </div>
-                        </div>
-
-                        <div style="font-weight: 700; font-size: 11.5px; font-family: var(--font-mono); border-bottom: 1px solid var(--border-strong); padding-bottom: 4px; margin-top: 1rem;">
-                            3. MARITAL & LEGAL DETAILS
-                        </div>
-                        <div class="form-grid" style="padding: 0;">
-                            <div class="form-group">
-                                <label class="form-label">Marriage Duration (Years) *</label>
-                                <input type="number" name="marriage_years" class="form-control" value="3" min="0" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Attending Physician *</label>
-                                <input type="text" name="primary_doctor" class="form-control" value="Dr. Elena Vance, MD" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Legal Consent Status</label>
-                                <select name="consent_status" class="form-control">
-                                    <option value="Verified">Verified (Signed)</option>
-                                    <option value="Pending">Pending</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div style="font-weight: 700; font-size: 11.5px; font-family: var(--font-mono); border-bottom: 1px solid var(--border-strong); padding-bottom: 4px; margin-top: 1rem;">
-                            4. INITIAL DIAGNOSTIC WORKUP
-                        </div>
-                        <div class="form-grid" style="padding: 0;">
-                            <div class="form-group">
-                                <label class="form-label">Serum AMH (ng/mL)</label>
-                                <input type="number" step="0.01" name="female_amh" class="form-control" placeholder="e.g. 2.45">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Antral Follicles (AFC)</label>
-                                <input type="number" name="female_afc" class="form-control" placeholder="e.g. 14">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Day 2/3 FSH (mIU/mL)</label>
-                                <input type="number" step="0.01" name="female_fsh" class="form-control" placeholder="e.g. 6.5">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Tubal Patency</label>
-                                <input type="text" name="tubal_patency" class="form-control" value="Both Patent">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Sperm Count (Million/mL)</label>
-                                <input type="number" step="0.1" name="sperm_count_million" class="form-control" placeholder="e.g. 24.0">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Progressive Motility (%)</label>
-                                <input type="number" name="sperm_motility_percent" class="form-control" placeholder="e.g. 42">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Kruger Morphology (%)</label>
-                                <input type="number" name="sperm_morphology_percent" class="form-control" placeholder="e.g. 4">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Sperm DFI (%)</label>
-                                <input type="number" name="sperm_dfi_percent" class="form-control" placeholder="e.g. 15">
-                            </div>
-                            <div class="form-group" style="grid-column: 1 / -1;">
-                                <label class="form-label">Clinical Diagnosis *</label>
-                                <input type="text" name="clinical_diagnosis" class="form-control" placeholder="e.g. Primary Infertility with Mild Male Factor" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline" onclick="closeModal('newCoupleModal')">Cancel</button>
-                        <button type="submit" class="btn btn-black">Register Couple & Workup</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    @endif
+                                    @endif
                                 </td>
                                 <td class="mono">{{ $cpl->marriage_years }} Years</td>
                                 <td>
@@ -564,7 +438,10 @@
                                     <div class="text-muted" style="font-size: 10.5px;">{{ $cpl->primary_doctor }}</div>
                                 </td>
                                 <td>
-                                    <span class="tag tag-black">{{ $cpl->consent_status }}</span>
+                                    <button type="button" class="btn btn-outline btn-sm" onclick="openModal('consentModal_{{ $cpl->id }}')" style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; font-size: 11px;" title="View legal ART & ICMR informed consent document">
+                                        <span class="tag tag-black" style="font-size: 9.5px; padding: 1px 5px;">{{ $cpl->consent_status }}</span>
+                                        <span style="text-decoration: underline; font-weight: 600;">View Consent &rarr;</span>
+                                    </button>
                                 </td>
                                 <td class="text-right">
                                     <button type="button" class="btn btn-black btn-sm" onclick="openModal('startCycleModal_{{ $cpl->id }}')">+ Start Cycle</button>
@@ -575,6 +452,101 @@
                                     </form>
                                 </td>
                             </tr>
+
+                            <!-- LEGAL INFORMED CONSENT MODAL -->
+                            <div class="modal-overlay" id="consentModal_{{ $cpl->id }}">
+                                <div class="modal-dialog" style="max-width: 760px;">
+                                    <div class="modal-header">
+                                        <div>
+                                            <div class="modal-title">National ART Act Legal Informed Consent Document</div>
+                                            <div class="text-muted mono" style="font-size: 10.5px;">COUPLE CODE: {{ $cpl->couple_code }} | FORM ART-04 (REGULATORY COMPLIANT)</div>
+                                        </div>
+                                        <button type="button" class="modal-close" onclick="closeModal('consentModal_{{ $cpl->id }}')">&times;</button>
+                                    </div>
+                                    <div class="modal-body" style="background: #ffffff; color: #000000; padding: 1.5rem; line-height: 1.6;">
+                                        <!-- Header Block -->
+                                        <div style="border: 2px solid #000000; padding: 1rem; margin-bottom: 1.25rem;">
+                                            <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid #000000; padding-bottom: 0.75rem; margin-bottom: 0.75rem;">
+                                                <div>
+                                                    <div style="font-weight: 800; font-size: 14.5px; text-transform: uppercase;">{{ $clinicSetting->clinic_name ?? 'AURA Reproductive Medicine Centre' }}</div>
+                                                    <div class="mono" style="font-size: 10.5px;">ART Reg. No.: {{ $clinicSetting->art_reg_no ?? 'ART-IND-2026-0894' }}</div>
+                                                    <div class="mono text-muted" style="font-size: 10px;">Medical Director: {{ $clinicSetting->director_name ?? 'Dr. Elena Vance, MD' }}</div>
+                                                </div>
+                                                <div style="text-align: right;">
+                                                    <span class="tag tag-black" style="font-size: 10px;">STATUTORY RECORD</span>
+                                                    <div class="mono" style="font-size: 11px; margin-top: 4px;">Consent Status: <strong>{{ $cpl->consent_status }}</strong></div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Couple Demographics -->
+                                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 11.5px; background: #fafafa; border: 1px solid #000000; padding: 10px;">
+                                                <div>
+                                                    <strong>Female Patient (Wife):</strong> {{ $cpl->wife->first_name }} {{ $cpl->wife->last_name }}<br>
+                                                    <span class="mono text-muted">MRN: {{ $cpl->wife->mrn }} | Blood: {{ $cpl->wife->blood_group }} | Phone: {{ $cpl->wife->phone }}</span>
+                                                </div>
+                                                <div>
+                                                    <strong>Male Partner (Husband):</strong> {{ $cpl->husband ? $cpl->husband->first_name . ' ' . $cpl->husband->last_name : 'Donor Sperm Protocol' }}<br>
+                                                    <span class="mono text-muted">MRN: {{ $cpl->husband->mrn ?? 'N/A' }} | Blood: {{ $cpl->husband->blood_group ?? 'N/A' }} | Phone: {{ $cpl->husband->phone ?? 'N/A' }}</span>
+                                                </div>
+                                                <div>
+                                                    <strong>Marriage Duration:</strong> {{ $cpl->marriage_years }} Years
+                                                </div>
+                                                <div>
+                                                    <strong>Supervising Clinician:</strong> {{ $cpl->primary_doctor }}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Statutory Clauses -->
+                                        <div style="font-size: 11.5px; display: flex; flex-direction: column; gap: 10px;">
+                                            <div style="border-left: 3px solid #000000; padding-left: 8px;">
+                                                <strong>Clause 1: Informed Consent for IVF / ICSI & Ovum Pick-Up (OPU)</strong>
+                                                <p style="margin-top: 3px; color: #222;">We hereby declare that we have been fully informed regarding the nature, clinical risks, medication side effects, conscious sedation risks, and realistic outcome probabilities of Controlled Ovarian Stimulation (COS), surgical transvaginal oocyte retrieval, and embryology procedures.</p>
+                                            </div>
+                                            <div style="border-left: 3px solid #000000; padding-left: 8px;">
+                                                <strong>Clause 2: Cryopreservation & Liquid Nitrogen Bio-Storage Authorization</strong>
+                                                <p style="margin-top: 3px; color: #222;">We explicitly consent to the vitrification and bio-repository storage of surplus viable blastocysts, oocytes, or semen in liquid nitrogen cryo-tanks (-196°C) as per the statutory guidelines of the ART Act.</p>
+                                            </div>
+                                            <div style="border-left: 3px solid #000000; padding-left: 8px;">
+                                                <strong>Clause 3: Statutory Rights & Genetic Testing Direction</strong>
+                                                <p style="margin-top: 3px; color: #222;">In accordance with national legal provisions, sex selection in any form is strictly prohibited. Genetic screening (PGT-A/M) shall be conducted solely for aneuploidy or severe monogenic disorder prevention.</p>
+                                            </div>
+                                        </div>
+
+                                        <!-- Signatures Block -->
+                                        <div style="margin-top: 1.5rem; border-top: 1px solid #000000; padding-top: 1rem; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; text-align: center; font-size: 11px;">
+                                            <div style="border-top: 1px dashed #000000; padding-top: 6px; margin-top: 25px;">
+                                                <strong>{{ $cpl->wife->first_name }} {{ $cpl->wife->last_name }}</strong><br>
+                                                <span class="text-muted">Signature of Female Partner</span>
+                                            </div>
+                                            <div style="border-top: 1px dashed #000000; padding-top: 6px; margin-top: 25px;">
+                                                <strong>{{ $cpl->husband ? $cpl->husband->first_name . ' ' . $cpl->husband->last_name : 'Donor Sperm Consented' }}</strong><br>
+                                                <span class="text-muted">Signature of Male Partner</span>
+                                            </div>
+                                            <div style="border-top: 1px dashed #000000; padding-top: 6px; margin-top: 25px;">
+                                                <strong>{{ $cpl->primary_doctor }}</strong><br>
+                                                <span class="text-muted">Treating Reproductive Specialist</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer" style="display: flex; justify-content: space-between; align-items: center;">
+                                        <form action="{{ route('ivf.couples.update', $cpl->id) }}" method="POST" style="display: inline;">
+                                            @csrf
+                                            <input type="hidden" name="primary_doctor" value="{{ $cpl->primary_doctor }}">
+                                            <input type="hidden" name="marriage_years" value="{{ $cpl->marriage_years }}">
+                                            <input type="hidden" name="status" value="{{ $cpl->status }}">
+                                            <input type="hidden" name="consent_status" value="{{ $cpl->consent_status === 'Verified' ? 'Pending' : 'Verified' }}">
+                                            <button type="submit" class="btn btn-outline btn-sm">
+                                                Mark Status as: {{ $cpl->consent_status === 'Verified' ? 'Pending' : 'Verified (Signed)' }}
+                                            </button>
+                                        </form>
+                                        <div style="display: flex; gap: 8px;">
+                                            <button type="button" class="btn btn-black btn-sm" onclick="window.print()">Print Legal Consent Form</button>
+                                            <button type="button" class="btn btn-outline btn-sm" onclick="closeModal('consentModal_{{ $cpl->id }}')">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <!-- EDIT COUPLE & WORKUP MODAL -->
                             <div class="modal-overlay" id="editCoupleModal_{{ $cpl->id }}">
@@ -760,6 +732,131 @@
                         @endforeach
                     </tbody>
                 </table>
+            </div>
+        </div>
+
+        <!-- NEW COUPLE & INFERTILITY WORKUP MODAL -->
+        <div class="modal-overlay" id="newCoupleModal">
+            <div class="modal-dialog">
+                <div class="modal-header">
+                    <div class="modal-title">Register New Couple & Infertility Workup</div>
+                    <button type="button" class="modal-close" onclick="closeModal('newCoupleModal')">&times;</button>
+                </div>
+                <form action="{{ route('ivf.couples.store') }}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <div style="font-weight: 700; font-size: 11.5px; font-family: var(--font-mono); border-bottom: 1px solid var(--border-strong); padding-bottom: 4px;">
+                            1. FEMALE PARTNER (WIFE)
+                        </div>
+                        <div class="form-grid" style="padding: 0;">
+                            <div class="form-group">
+                                <label class="form-label">First Name *</label>
+                                <input type="text" name="wife_first_name" class="form-control" placeholder="e.g. Priya" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Last Name *</label>
+                                <input type="text" name="wife_last_name" class="form-control" placeholder="e.g. Sharma" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Blood Group</label>
+                                <input type="text" name="wife_blood_group" class="form-control" placeholder="e.g. B Positive">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Mobile Number (India) *</label>
+                                <input type="tel" name="wife_phone" class="form-control" value="+91 " placeholder="+91 98765 43210" required>
+                            </div>
+                        </div>
+
+                        <div style="font-weight: 700; font-size: 11.5px; font-family: var(--font-mono); border-bottom: 1px solid var(--border-strong); padding-bottom: 4px; margin-top: 1rem;">
+                            2. MALE PARTNER (HUSBAND) / SPERM PROTOCOL
+                        </div>
+                        <div class="form-grid" style="padding: 0;">
+                            <div class="form-group">
+                                <label class="form-label">First Name</label>
+                                <input type="text" name="husband_first_name" class="form-control" placeholder="e.g. Rahul (Leave blank if donor)">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" name="husband_last_name" class="form-control" placeholder="e.g. Sharma">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Blood Group</label>
+                                <input type="text" name="husband_blood_group" class="form-control" placeholder="e.g. O Positive">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Mobile Number (India)</label>
+                                <input type="tel" name="husband_phone" class="form-control" value="+91 " placeholder="+91 98765 43210">
+                            </div>
+                        </div>
+
+                        <div style="font-weight: 700; font-size: 11.5px; font-family: var(--font-mono); border-bottom: 1px solid var(--border-strong); padding-bottom: 4px; margin-top: 1rem;">
+                            3. MARITAL & LEGAL DETAILS
+                        </div>
+                        <div class="form-grid" style="padding: 0;">
+                            <div class="form-group">
+                                <label class="form-label">Marriage Duration (Years) *</label>
+                                <input type="number" name="marriage_years" class="form-control" value="3" min="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Attending Physician *</label>
+                                <input type="text" name="primary_doctor" class="form-control" value="Dr. Elena Vance, MD" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Legal Consent Status *</label>
+                                <select name="consent_status" class="form-control" required>
+                                    <option value="Verified">Verified (Signed)</option>
+                                    <option value="Pending" selected>Pending Review</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div style="font-weight: 700; font-size: 11.5px; font-family: var(--font-mono); border-bottom: 1px solid var(--border-strong); padding-bottom: 4px; margin-top: 1rem;">
+                            4. INITIAL DIAGNOSTIC WORKUP
+                        </div>
+                        <div class="form-grid" style="padding: 0;">
+                            <div class="form-group">
+                                <label class="form-label">Serum AMH (ng/mL)</label>
+                                <input type="number" step="0.01" name="female_amh" class="form-control" placeholder="e.g. 2.45">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Antral Follicles (AFC)</label>
+                                <input type="number" name="female_afc" class="form-control" placeholder="e.g. 14">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Day 2/3 FSH (mIU/mL)</label>
+                                <input type="number" step="0.01" name="female_fsh" class="form-control" placeholder="e.g. 6.5">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Tubal Patency</label>
+                                <input type="text" name="tubal_patency" class="form-control" value="Both Patent">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Sperm Count (Million/mL)</label>
+                                <input type="number" step="0.1" name="sperm_count_million" class="form-control" placeholder="e.g. 24.0">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Progressive Motility (%)</label>
+                                <input type="number" name="sperm_motility_percent" class="form-control" placeholder="e.g. 42">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Kruger Morphology (%)</label>
+                                <input type="number" name="sperm_morphology_percent" class="form-control" placeholder="e.g. 4">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Sperm DFI (%)</label>
+                                <input type="number" name="sperm_dfi_percent" class="form-control" placeholder="e.g. 15">
+                            </div>
+                            <div class="form-group" style="grid-column: 1 / -1;">
+                                <label class="form-label">Clinical Diagnosis *</label>
+                                <input type="text" name="clinical_diagnosis" class="form-control" placeholder="e.g. Primary Infertility with Mild Male Factor" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline" onclick="closeModal('newCoupleModal')">Cancel</button>
+                        <button type="submit" class="btn btn-black">+ Register Couple & Infertility Workup</button>
+                    </div>
+                </form>
             </div>
         </div>
     @endif

@@ -27,10 +27,7 @@ class IvfController extends Controller
     public function index(Request $request)
     {
         if (!Auth::check()) {
-            $defaultUser = User::first();
-            if ($defaultUser) {
-                Auth::login($defaultUser);
-            }
+            return redirect()->route('login');
         }
 
         $currentUser = Auth::user();
