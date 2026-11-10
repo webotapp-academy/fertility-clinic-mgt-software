@@ -34,6 +34,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/couples', [IvfController::class, 'storeCouple'])->name('ivf.couples.store');
     Route::post('/couples/{id}/update', [IvfController::class, 'updateCoupleWorkup'])->name('ivf.couples.update');
     Route::post('/couples/{id}/delete', [IvfController::class, 'deleteCouple'])->name('ivf.couples.delete');
+    Route::post('/couples/{id}/upload-consent', [IvfController::class, 'uploadConsentFile'])->name('ivf.couples.upload_consent');
+    Route::get('/couples/{id}/consent-file', [IvfController::class, 'viewConsentFile'])->name('ivf.couples.view_consent_file');
+    Route::post('/couples/{id}/remove-consent-file', [IvfController::class, 'removeConsentFile'])->name('ivf.couples.remove_consent_file');
 
     // Treatment Cycles & Folliculometry CRUD
     Route::post('/cycles', [IvfController::class, 'storeCycle'])->name('ivf.cycles.store');

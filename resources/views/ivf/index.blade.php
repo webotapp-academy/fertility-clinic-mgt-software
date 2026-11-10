@@ -438,9 +438,12 @@
                                     <div class="text-muted" style="font-size: 10.5px;">{{ $cpl->primary_doctor }}</div>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline btn-sm" onclick="openModal('consentModal_{{ $cpl->id }}')" style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; font-size: 11px;" title="View legal ART & ICMR informed consent document">
+                                    <button type="button" class="btn btn-outline btn-sm" onclick="openModal('consentModal_{{ $cpl->id }}')" style="display: inline-flex; align-items: center; gap: 5px; padding: 3px 8px; font-size: 11px;" title="View legal ART & ICMR informed consent document">
                                         <span class="tag tag-black" style="font-size: 9.5px; padding: 1px 5px;">{{ $cpl->consent_status }}</span>
-                                        <span style="text-decoration: underline; font-weight: 600;">View Consent &rarr;</span>
+                                        @if($cpl->consent_file_path)
+                                            <span style="font-size: 10px; font-weight: 700; background: #000; color: #fff; padding: 0 4px; border-radius: 2px;">FILE</span>
+                                        @endif
+                                        <span style="text-decoration: underline; font-weight: 600;">View &rarr;</span>
                                     </button>
                                 </td>
                                 <td class="text-right">
@@ -526,6 +529,57 @@
                                             <div style="border-top: 1px dashed #000000; padding-top: 6px; margin-top: 25px;">
                                                 <strong>{{ $cpl->primary_doctor }}</strong><br>
                                                 <span class="text-muted">Treating Reproductive Specialist</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- SIGNED PHYSICAL SCAN ATTACHMENT SECTION -->
+                                        <div style="margin-top: 1.5rem; border-top: 2px solid #000000; padding-top: 1rem;">
+                                            <div style="font-weight: 800; font-size: 12px; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 8px;">
+                                                Signed Physical Consent Scan / Uploaded Document
+                                            </div>
+
+                                            @if($cpl->consent_file_path)
+                                                <div style="background: #f4f4f5; border: 1.5px solid #000000; padding: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                                                    <div>
+                                                        <div style="font-weight: 700; font-size: 12px; display: flex; align-items: center; gap: 6px;">
+                                                            <span>📄 SIGNED PHYSICAL DOCUMENT ATTACHED</span>
+                                                            <span class="tag tag-black" style="font-size: 9px; padding: 1px 5px;">VERIFIED</span>
+                                                        </div>
+                                                        <div class="mono text-muted" style="font-size: 10.5px; margin-top: 4px;">
+                                                            File: <strong>{{ basename($cpl->consent_file_path) }}</strong> | Uploaded: {{ $cpl->consent_signed_at ? \Carbon\Carbon::parse($cpl->consent_signed_at)->format('d M Y, h:i A') : 'Recorded' }}
+                                                        </div>
+                                                    </div>
+                                                    <div style="display: flex; gap: 8px; align-items: center;">
+                                                        <a href="{{ route('ivf.couples.view_consent_file', $cpl->id) }}" target="_blank" class="btn btn-black btn-sm" style="font-size: 11px;">
+                                                            View / Download Document &nearr;
+                                                        </a>
+                                                        <form action="{{ route('ivf.couples.remove_consent_file', $cpl->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to remove the uploaded signed document?');">
+                                                            @csrf
+                                                            <button type="submit" class="btn btn-outline btn-sm" style="font-size: 11px;">Remove File</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            @else
+                                                <div style="background: #fafafa; border: 1px dashed #71717a; padding: 10px; margin-bottom: 10px; font-size: 11.5px; color: #555;">
+                                                    No physical signed document attached yet. You may print this legal consent form, obtain signatures from both partners, and upload the signed PDF or image scan below.
+                                                </div>
+                                            @endif
+
+                                            <!-- UPLOAD / REPLACE FORM -->
+                                            <div style="border: 1px solid #000000; padding: 12px; margin-top: 10px; background: #ffffff;">
+                                                <form action="{{ route('ivf.couples.upload_consent', $cpl->id) }}" method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div style="font-weight: 700; font-size: 11px; font-family: var(--font-mono); margin-bottom: 6px;">
+                                                        {{ $cpl->consent_file_path ? 'REPLACE SIGNED CONSENT DOCUMENT' : 'UPLOAD SIGNED CONSENT DOCUMENT (PDF / SCAN / PHOTO)' }}
+                                                    </div>
+                                                    <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                                                        <input type="file" name="signed_consent_file" accept=".pdf,.jpg,.jpeg,.png,.webp" class="form-control" style="font-size: 11.5px; padding: 4px; flex: 1; min-width: 200px;" required>
+                                                        <button type="submit" class="btn btn-black btn-sm">Upload Signed Consent &rarr;</button>
+                                                    </div>
+                                                    <div class="text-muted" style="font-size: 10px; margin-top: 4px;">
+                                                        Accepted formats: PDF, JPG, PNG, WEBP (Max 15MB). Uploading automatically verifies the consent status.
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

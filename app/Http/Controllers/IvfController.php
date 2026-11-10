@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use App\Models\ClinicSetting;
 use App\Models\Lead;
@@ -270,6 +271,65 @@ class IvfController extends Controller
         }
 
         return redirect()->route('ivf.home', ['tab' => 'couples'])->with('success', "Couple {$couple->couple_code} profile & diagnostics updated.");
+    }
+
+    public function uploadConsentFile(Request $request, $id)
+    {
+        $couple = Couple::findOrFail($id);
+
+        $request->validate([
+            'signed_consent_file' => 'required|file|mimes:pdf,jpg,jpeg,png,webp|max:15360',
+        ]);
+
+        if ($request->hasFile('signed_consent_file')) {
+            // Delete old file if exists
+            if ($couple->consent_file_path && Storage::disk('local')->exists($couple->consent_file_path)) {
+                Storage::disk('local')->delete($couple->consent_file_path);
+            }
+
+            $file = $request->file('signed_consent_file');
+            $filename = 'consent_' . $couple->couple_code . '_' . time() . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('consents', $filename, 'local');
+
+            $couple->update([
+                'consent_file_path' => $path,
+                'consent_signed_at' => now(),
+                'consent_status' => 'Verified',
+            ]);
+
+            return redirect()->route('ivf.home', ['tab' => 'couples'])->with('success', "Signed legal consent document uploaded and verified for couple {$couple->couple_code}.");
+        }
+
+        return redirect()->route('ivf.home', ['tab' => 'couples'])->with('error', 'No file was uploaded.');
+    }
+
+    public function viewConsentFile($id)
+    {
+        $couple = Couple::findOrFail($id);
+
+        if (!$couple->consent_file_path || !Storage::disk('local')->exists($couple->consent_file_path)) {
+            return redirect()->route('ivf.home', ['tab' => 'couples'])->with('error', 'No signed consent document found for this couple.');
+        }
+
+        $fullPath = Storage::disk('local')->path($couple->consent_file_path);
+        return response()->file($fullPath);
+    }
+
+    public function removeConsentFile($id)
+    {
+        $couple = Couple::findOrFail($id);
+
+        if ($couple->consent_file_path && Storage::disk('local')->exists($couple->consent_file_path)) {
+            Storage::disk('local')->delete($couple->consent_file_path);
+        }
+
+        $couple->update([
+            'consent_file_path' => null,
+            'consent_signed_at' => null,
+            'consent_status' => 'Pending',
+        ]);
+
+        return redirect()->route('ivf.home', ['tab' => 'couples'])->with('success', "Signed consent document removed for couple {$couple->couple_code}. Status reset to Pending.");
     }
 
     // -------------------------------------------------------------------------
