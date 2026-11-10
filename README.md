@@ -1,37 +1,39 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-# AURA IVF — Reproductive Medicine & Assisted Conception Clinical OS
+<div align="center">
+
+# 🩺 AURA IVF
+### Reproductive Medicine & Assisted Conception Clinical Operating System
+
+[![Open Source Love](https://img.shields.io/badge/Open%20Source-%E2%99%A5-000000.svg?style=for-the-badge)](https://github.com/webotapp-academy/fertility-clinic-mgt-software)
+[![License: MIT](https://img.shields.io/badge/License-MIT-000000.svg?style=for-the-badge)](LICENSE)
+[![PHP](https://img.shields.io/badge/PHP-8.2%2B-000000.svg?style=for-the-badge&logo=php)](https://php.net)
+[![Framework](https://img.shields.io/badge/Framework-Laravel%2011-000000.svg?style=for-the-badge&logo=laravel)](https://laravel.com)
+[![Regulatory](https://img.shields.io/badge/Compliance-National%20ART%20Act%202021-000000.svg?style=for-the-badge)](#-regulatory-compliance--signed-consent-management)
+[![UI System](https://img.shields.io/badge/UI-100%25%20Monochrome%20Light-000000.svg?style=for-the-badge)](#-design-system--clinical-ui)
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <strong>An enterprise-grade, open-source clinical OS built specifically for Fertility Clinics, IVF Hospitals, Embryology Laboratories, and Assisted Reproductive Healthcare Networks.</strong>
 </p>
-[![License: MIT](https://img.shields.io/badge/License-MIT-black.svg?style=flat-square)](LICENSE)
-[![Laravel](https://img.shields.io/badge/Laravel-11.x-black.svg?style=flat-square&logo=laravel)](https://laravel.com)
-[![PHP](https://img.shields.io/badge/PHP-8.2%2B-black.svg?style=flat-square&logo=php)](https://php.net)
-[![Database](https://img.shields.io/badge/Database-MySQL%20%7C%20MariaDB%20%7C%20SQLite-black.svg?style=flat-square)](https://mysql.com)
-[![Design](https://img.shields.io/badge/Design%20System-Monochrome%20Clinical%20Light-black.svg?style=flat-square)](#design-system--clinical-ui)
 
-## About Laravel
-**AURA IVF** is an enterprise-grade, open-source Clinical Operating System engineered specifically for Assisted Reproductive Technology (ART) centres, IVF hospitals, embryology laboratories, and specialized maternity networks.
+[Key Features](#-clinical-architecture--key-modules) •
+[RBAC Roles](#-clinical-role-based-access-control-rbac) •
+[Installation Guide](#-quickstart--installation) •
+[Demo Credentials](#-default-clinical-accounts) •
+[Consent Archive](#-regulatory-compliance--signed-consent-management)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-From initial infertility enquiry and legal KYC compliance to follicle stimulation, embryology grading, cycle failure root-cause analysis (RCA), high-risk obstetric monitoring, labor delivery, and pediatric vaccination tracking — AURA IVF provides a unified, zero-distraction clinical workstation.
+</div>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 ---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-## 🏛 Key Clinical Modules
+## 📖 Overview
 
-## Learning Laravel
+**AURA IVF** is an end-to-end clinical management platform covering the entire patient and laboratory lifecycle in reproductive medicine. 
+
+From initial couple consultation, legal KYC onboarding, and hormonal stimulation monitoring to surgical oocyte retrieval (OPU), embryology grading, embryo transfer, failure root-cause analysis (RCA), high-risk antenatal care (ANC), delivery documentation, and pediatric multi-vaccine tracking — AURA IVF consolidates fragmented clinical notes into one cohesive, auditable system.
+
+---
+
+## 🏛 Clinical Architecture & Key Modules
+
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                          AURA IVF CLINICAL OS                               │
@@ -45,78 +47,87 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 └─────────────────────┴───────────────────────────┴───────────────────────────┘
 ```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-### 1. Overview & Real-Time Clinical KPIs
-* Dynamic top-bar metrics tracking active CRM pipeline, verified couples, stimulation cycles underway, re-attempts managed, vitrified cryo straws, live birth graduations, and scheduled pediatric vaccine milestones.
-* Action queues for imminent trigger shots (35h hCG countdown), Day 5 blastocyst inspection windows, quantitative Beta-hCG blood review, and Liquid Nitrogen (LN2) safety alarms.
+### 1. Overview & Clinical Command Center (`?tab=overview`)
+* Real-time KPI counters: Enquiries in pipeline, registered couples, active ovarian stimulation cycles, failure re-attempts managed, cryobank straws stored, live birth graduations, and scheduled pediatric vaccine doses.
+* Clinical benchmarks: Clinical Pregnancy Rate (CPR), 2PN Fertilization Rate, Day 5 Blastulation Rate, Single Embryo Transfer (SET) compliance, and Embryo Cryo Survival Rate.
+* Urgent action queues: 35-hour hCG trigger countdown timers, Day 5 blastocyst inspection windows, Beta-hCG blood test reviews, and Liquid Nitrogen ($LN_2$) refill alerts.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-### 2. Patient Relationship CRM & Infertility Enquiries
-* Inbound enquiry management with primary etiology classification: Tubal Factor, Male Infertility, Diminished Ovarian Reserve (DOR), PCOS, Endometriosis, Advanced Maternal Age, or Unexplained.
-* Consultation pipeline, referral source tracking, priority status, and one-click conversion into registered couples.
+### 2. Patient Relationship CRM & Infertility Enquiries (`?tab=leads`)
+* Lead tracking categorized by primary infertility etiology: Tubal Factor, Male Infertility, Diminished Ovarian Reserve (DOR), PCOS, Endometriosis, Advanced Maternal Age, or Unexplained.
+* Follow-up pipeline stages: `New Inquiry` &rarr; `Contacted` &rarr; `Consultation Scheduled` &rarr; `Converted to Registered Couple`.
+* 1-click conversion from inquiry to official couple workup.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-### 3. Couple Onboarding, Legal KYC & Pre-ART Workup
-* Full female and male partner profiles with karyotyping, blood grouping, and infectious serology screening (HIV, HBsAg, HCV, VDRL).
-* Strict compliance with the National Assisted Reproductive Technology (Regulation) Act & ICMR ethical guidelines.
-* Baseline diagnostic logging: Anti-Müllerian Hormone (AMH), Baseline Antral Follicle Count (AFC), Semen Analysis, and Diagnostic Hysteroscopy/SIS.
+### 3. Couple Registration, Legal KYC & Diagnostic Workup (`?tab=couples`)
+* Distinct clinical files for Female Partner (Wife) and Male Partner (Husband) with auto-generated Medical Record Numbers (MRN).
+* Baseline diagnostics logging: Anti-Müllerian Hormone (AMH), Baseline Antral Follicle Count (AFC), Tubal Patency (HSG/SIS), and Semen Analysis (Sperm Count, Motility %, Kruger Morphology %, DFI %).
+* Full compliance with the National Assisted Reproductive Technology (Regulation) Act & ICMR ethical guidelines.
 
-## Agentic Development
-### 4. Controlled Ovarian Stimulation (COS) & Folliculometry
-* Flexible protocol formulation: Antagonist protocols, Agonist microdose flare, Long luteal agonist, Natural / Mild IVF, and Freeze-All strategies for OHSS prevention.
-* Longitudinal ultrasound folliculometry tracking (Day 3 through Day 13+): Per-ovary follicle diameter distribution, endometrial thickness, trilaminar pattern grading, Serum Estradiol ($E_2$) & Progesterone ($P_4$) kinetics.
-* Dual / Recombinant hCG trigger scheduling with exact 35-36 hour countdown timer to surgical oocyte retrieval.
+### 4. Controlled Ovarian Stimulation (COS) & Folliculometry (`?tab=cycles`)
+* Treatment protocol engine: Flexible GnRH Antagonist Protocol, Microdose Agonist Flare, Long Luteal Agonist, Mild IVF, and Freeze-All for OHSS prevention.
+* Longitudinal ultrasound scan logs (Day 3 through Day 13+): Bilateral follicle size tracking (mm), endometrial thickness, trilaminar pattern grading (Grade A, B, C), and Serum Estradiol ($E_2$) kinetics.
+* Dual / Recombinant hCG trigger shot scheduling with exact 35-36 hour countdown timer to surgical aspiration.
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
-### 5. Oocyte Pick-Up (OPU) & Embryology Laboratory Information System (ELIS)
-* Surgical aspiration logs: Total oocytes retrieved, MII mature metaphase-II oocytes, MI, and GV germinal vesicles.
-* Andrology & sperm preparation: Swim-up, density gradient centrifugation, Zymot microfluidic sorting, and donor quarantine verification.
-* Insemination techniques: Conventional IVF vs. ICSI vs. IMSI vs. PICSI with Calcium Ionophore activation for previous fertilization arrest.
-* Blastocyst Gardner Grading (Day 1 2PN fertilization check, Day 3 cleavage cell-count/fragmentation, Day 5/6 expanded blastocysts e.g., `4AA`, `4AB`, `3BB`).
-* PGT-A / PGT-M biopsy documentation and genetics laboratory chain-of-custody tracking.
+### 5. OPU Surgical Retrieval & Embryology Lab (ELIS) (`?tab=laboratory`)
+* Surgical egg retrieval logs: Total aspirated oocytes, MII mature metaphase-II oocytes, MI, and GV germinal vesicles.
+* Andrology semen preparation: Swim-up, density gradient centrifugation, Zymot microfluidic sorting, and donor quarantine clearance.
+* Insemination methods: Conventional IVF vs. ICSI vs. IMSI vs. PICSI with Calcium Ionophore activation.
+* Blastocyst Gardner Grading: Day 1 fertilization check (2PN), Day 3 cleavage cell counts and fragmentation %, and Day 5/6 expanded blastocysts (e.g., `4AA`, `4AB`, `3BB`).
 
-### 6. Embryo Transfers (ET) & Quantitative Beta-hCG Monitoring
-* Fresh Embryo Transfer vs. Frozen Embryo Transfer (FET) under HRT programmed endometrium or natural modified cycles.
-* Transfer catheter type, acoustic ultrasound guidance documentation, and retained embryo safety clearance.
-* Serial quantitative Serum Beta-hCG monitoring (Day 14 and Day 16 post-transfer) with doubling-velocity validation.
-* Early viability ultrasound logging (gestational sac, yolk sac, crown-rump length CRL, and fetal heart activity).
+### 6. Embryo Transfers (ET) & Quantitative Beta-hCG Monitoring (`?tab=transfers`)
+* Fresh Embryo Transfer vs. Frozen Embryo Transfer (FET) under programmed HRT or natural modified cycles.
+* Acoustic ultrasound catheter guidance documentation and retained embryo safety clearance.
+* Serial quantitative Serum Beta-hCG tracking (Day 14 and Day 16 post-transfer) with doubling-velocity validation.
+* Early ultrasound viability records (gestational sac, yolk sac, crown-rump length CRL, and fetal cardiac activity).
 
-### 7. Cycle Failure Root Cause Analysis (RCA) & Smart Re-attempts
-* Multi-factorial failure taxonomy: Implantation failure, embryonic arrest, poor ovarian response, premature luteinization, or fertilization failure.
+### 7. Cycle Failure Root Cause Analysis (RCA) & Smart Re-attempts (`?tab=failures`)
+* Categorized failure taxonomy: Implantation failure, embryonic arrest, poor ovarian response, premature luteinization, or fertilization failure.
 * Dedicated Root Cause Analysis: Endometrial receptivity shift (ERA), immunological / thrombophilia screening, sperm DNA fragmentation index (DFI), and uterine structural factors.
-* Algorithmic Re-attempt Cycle Planner: Automatically carries over cycle failure insights and suggests optimized protocols (e.g. Microdose Flare + Growth Hormone priming, PRP endometrial infusion, PICSI + Zymot).
+* Algorithmic Re-attempt Cycle Planner: Automatically carries forward cycle history and suggests optimized protocols (e.g. Microdose Flare + Growth Hormone priming, PRP endometrial infusion, PICSI + Zymot).
 
-### 8. High-Risk Antenatal Care (ANC)
-* Trimester-by-trimester obstetric monitoring with Estimated Date of Delivery (EDD) calculated directly from embryo age and transfer date.
-* Ultrasound biometric tracking: Biparietal Diameter (BPD), Head Circumference (HC), Abdominal Circumference (AC), Femur Length (FL), and Estimated Fetal Weight (EFW).
-* High-risk maternal alerts: Gestational Diabetes Mellitus (GDM), Pre-eclampsia, Placenta Previa, and Multi-fetal IVF Gestations.
+### 8. High-Risk Antenatal Care (ANC) (`?tab=antenatal`)
+* Longitudinal obstetric monitoring with Estimated Date of Delivery (EDD) calculated directly from embryo age and transfer date.
+* Ultrasound fetal biometric tracking: Biparietal Diameter (BPD), Head Circumference (HC), Abdominal Circumference (AC), Femur Length (FL), and Estimated Fetal Weight (EFW).
+* High-risk pregnancy alerts: Gestational Diabetes Mellitus (GDM), Pre-eclampsia, Placenta Previa, and Multi-fetal IVF Gestations.
 
-### 9. Labor Room Suite & Delivery Documentation
+### 9. Labor Room Suite & Delivery Documentation (`?tab=deliveries`)
 * Labor onset tracking, delivery mode (Spontaneous Vaginal, Vacuum-Assisted, Elective/Emergency LSCS Cesarean Section).
-* Live birth registry: Gestational age at birth, infant gender, birth weight, and 1-minute & 5-minute Apgar scoring.
-* Immediate pediatrician handover and post-partum maternal stabilization logs.
+* Live birth registry: Gestational age at delivery, infant gender, birth weight, and 1-minute & 5-minute Apgar scoring.
+* Pediatrician handover notes and maternal post-partum stabilization logs.
 
-### 10. Pediatric Care & Multi-Dose Vaccination Scheduler
-* Birth records linked directly to the parent IVF conception cycle.
-* Comprehensive pediatric milestone monitoring.
-* Automated immunization scheduler following WHO and National Immunization Programs (Birth, 6w, 10w, 14w, 6m, 9m, 12m, 15m, 18m).
-* Batch vaccination scheduling and clinical administration remarks with adverse event surveillance.
+### 10. Pediatric Care & Multi-Dose Vaccination Scheduler (`?tab=pediatrics`)
+* Pediatric records permanently linked to the parent IVF conception cycle.
+* Milestone growth and developmental monitoring.
+* Multi-dose immunization scheduler adhering to WHO and National Immunization Programs (Birth, 6w, 10w, 14w, 6m, 9m, 12m, 15m, 18m).
+* Batch immunization scheduling and adverse event surveillance.
 
-### 11. Cryobank & Bio-Repository Management
+### 11. Cryobank & Bio-Repository Management (`?tab=cryobank`)
 * Liquid Nitrogen ($LN_2$) bio-repository tracking for Embryos, Oocytes, and Semen straws.
-* Physical storage hierarchy: Tank ID &rarr; Canister &rarr; Goblet &rarr; Straw / Cryovial ID.
+* Physical storage hierarchy:
+  $$\text{Tank ID} \longrightarrow \text{Canister} \longrightarrow \text{Goblet} \longrightarrow \text{Straw / Cryovial ID}$$
 * Vitrification media lot tracking, storage duration billing, and annual cryopreservation renewal consents.
 
-### 12. Settings, Facility Master & Role-Based Access Control (RBAC)
-* National ART Registry accreditation number and Medical Director licensing.
+### 12. Clinic Master Settings & User Access Control (`?tab=settings`)
+* National ART Registry accreditation number and Lead Medical Director license profile.
 * Environmental baselines: Embryology incubator calibration ($37.0^\circ\text{C}$, $6.0\%\text{ CO}_2$, $5.0\%\text{ O}_2$) and $LN_2$ minimum safety alarm levels.
-* Role-Based Access Control restricting views to relevant clinical workflows.
+* User account provisioning and password management.
+
+---
+
+## 📑 Regulatory Compliance & Signed Consent Management
+
+Under the National ART Act, informed consent documentation is mandatory prior to initiating clinical procedures. AURA IVF provides a complete consent lifecycle:
+
+* **Statutory Consent Document (Form ART-04):** Built-in legal consent template featuring clinic accreditation details, couple identification, risk disclosures, cryo authorization, and advance directives.
+* **Printer-Ready Format:** Clinicians can print physical consent copies directly via the built-in `Print Legal Consent Form` button.
+* **Physical Scan Upload & Archive:** Once the couple signs the document, staff can upload the signed physical scan (PDF, JPG, PNG, WEBP up to 15MB).
+* **Instant Verification:** Uploading attaches the document to the couple's permanent record, activates the `[FILE]` tag on the dashboard, and marks the consent status as **Verified (Signed)**.
+* **Secure Access:** Documents are stored in encrypted clinical storage and can only be accessed or downloaded by authenticated medical staff.
 
 ---
 
 ## 🔐 Clinical Role-Based Access Control (RBAC)
 
-AURA IVF enforces clinical specialty separation so personnel only interact with relevant modules:
+AURA IVF enforces clinical specialty separation so medical staff only interact with modules relevant to their role:
 
 | Clinical Role | Accessible Modules |
 | :--- | :--- |
@@ -133,41 +144,36 @@ AURA IVF enforces clinical specialty separation so personnel only interact with 
 ## 🎨 Design System & Clinical UI
 
 * **100% Monochrome Light Theme:** High-contrast pure white (`#ffffff`) background with deep black (`#000000`) typography and crisp 1px solid borders.
-* **Ergonomic for Clinical Lighting:** Eliminates eye-strain in dimly lit embryology laser suites, ultrasound rooms, and surgical theatres.
-* **Zero Color Distractions:** No colorful status badges or unnecessary visual clutter; clinical statuses are conveyed through high-legibility typographic framing.
-* **Localized Clinical Standards:** Defaults to India (`+91`) mobile phone inputs and standard ISO dates (`YYYY-MM-DD`).
+* **Zero Color Distractions:** Eliminates color fatigue and optimizes visibility in low-light embryology suites and ultrasound scanning rooms.
+* **Regional Clinical Localization:** Pre-configured with India (`+91`) mobile phone inputs and standard ISO date formatting (`YYYY-MM-DD`).
 
 ---
 
 ## 🚀 Quickstart & Installation
 
 ### Prerequisites
-* **PHP:** >= 8.2 with `pdo_mysql`, `mbstring`, `openssl`, `tokenizer`, `xml`, `ctype`, `json`, `bcmath`
+* **PHP:** >= 8.2 (Extensions: `pdo_mysql`, `mbstring`, `openssl`, `tokenizer`, `xml`, `ctype`, `json`, `bcmath`)
 * **Composer:** >= 2.x
-* **Database:** MySQL >= 8.0 or MariaDB >= 10.4 (or SQLite for local testing)
+* **Database:** MySQL >= 8.0, MariaDB >= 10.4, or SQLite
 * **Web Server:** Apache (XAMPP / MAMP), Nginx, or built-in PHP server
 
 ### 1. Clone the Repository
 ```bash
-composer require laravel/boost --dev
 git clone https://github.com/webotapp-academy/fertility-clinic-mgt-software.git
 cd fertility-clinic-mgt-software
 ```
 
-php artisan boost:install
-### 2. Install PHP Dependencies
+### 2. Install Dependencies
 ```bash
 composer install --no-dev --optimize-autoloader
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
-### 3. Environment Configuration
+### 3. Configure Environment
 ```bash
 cp .env.example .env
 php artisan key:generate
 ```
 
-## Contributing
 Configure your database credentials in `.env`:
 ```env
 DB_CONNECTION=mysql
@@ -178,39 +184,32 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-### 4. Database Migration & Clinical Seeding
-Create the database in MySQL (`CREATE DATABASE ivf;`), then run:
+### 4. Run Migrations & Clinical Seeder
+Create the MySQL database (`CREATE DATABASE ivf;`), then run:
 ```bash
 php artisan migrate --seed
 ```
 
-## Code of Conduct
-### 5. Launch Local Workstation
+### 5. Launch Workstation
 ```bash
 php artisan serve
 ```
-Visit `http://127.0.0.1:8000` in your web browser.
+Open your browser and navigate to: `http://127.0.0.1:8000` (or `http://localhost/sms/ivf/public/` when using XAMPP).
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 ---
 
-## Security Vulnerabilities
 ## 🔑 Default Clinical Accounts
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-The database seeder pre-configures clinical accounts for immediate evaluation:
+The seeder initializes demo accounts for immediate clinical evaluation:
 
-## License
-| Role | Username / Email | Password |
+| Clinical Role | Username / Email | Password |
 | :--- | :--- | :--- |
 | **Super Admin / Medical Director** | `admin@aura-ivf.com` | `admin123` |
 | **Chief Embryologist** | `embryo@aura-ivf.com` | `admin123` |
 | **Consultant Obstetrician** | `obgyn@aura-ivf.com` | `admin123` |
 | **Senior Clinical Nurse** | `nurse@aura-ivf.com` | `admin123` |
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-> *Note: For production deployments, change all default passwords immediately under `Settings & Access Control`.*
+*(1-click role login shortcuts are also provided directly on the login screen).*
 
 ---
 
@@ -220,21 +219,23 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 fertility-clinic-mgt-software/
 ├── app/
 │   ├── Http/Controllers/
-│   │   ├── AuthController.php      # Workstation sign-in, session guard & logout
-│   │   └── IvfController.php       # Core clinical operations & CRUD pipelines
+│   │   ├── AuthController.php      # Sign-in, session guards & logout
+│   │   └── IvfController.php       # Core clinical operations & file uploads
 │   └── Models/                     # Eloquent entities & RBAC permission logic
 │       ├── AntenatalRecord.php
 │       ├── BabyRecord.php
 │       ├── ClinicSetting.php       # Facility baselines & ART registry singleton
-│       ├── Couple.php
+│       ├── Couple.php              # Couple record with signed consent file relations
 │       ├── CryobankStorage.php
 │       ├── CycleOutcome.php
 │       ├── DeliveryRecord.php
 │       ├── EmbryoTransfer.php
 │       ├── FollicularScan.php
+│       ├── InfertilityWorkup.php
 │       ├── IvfCycle.php
 │       ├── Lead.php
 │       ├── OpuAndLabRecord.php
+│       ├── Patient.php             # Individual female/male patient files
 │       ├── User.php                # Staff accounts & canAccessTab() RBAC
 │       └── VaccinationSchedule.php
 ├── database/
@@ -243,28 +244,18 @@ fertility-clinic-mgt-software/
 ├── resources/
 │   └── views/ivf/
 │       ├── layout.blade.php        # Ergonomic monochrome sidebar & top bar
-│       ├── login.blade.php         # Clean login portal with 1-click clinical demos
-│       └── index.blade.php         # Modular workspaces (Tabs 1 through 12)
+│       ├── login.blade.php         # Secure login portal with 1-click clinical demos
+│       └── index.blade.php         # Modular workspaces & consent document viewer
 └── routes/
-    └── web.php                     # Clinical routes & authorization endpoints
+    └── web.php                     # Protected clinical routes & authorization endpoints
 ```
-
----
-
-## 🛡 Security & Compliance Note
-
-AURA IVF is built with patient data security in mind:
-* All patient identifiers and clinical records are protected behind authenticated sessions.
-* CSRF protection is active on every state-altering form.
-* Passwords are encrypted using high-cost Bcrypt hashing.
-* In accordance with ART Act provisions, couples, cryo records, and cycle history maintain an immutable clinical audit trail.
 
 ---
 
 ## 📄 License
 
-This software is open-source and licensed under the [MIT License](LICENSE). You are free to download, use, customize, and deploy it for clinical, educational, or commercial healthcare settings.
+This software is open-source and released under the [MIT License](LICENSE). You are free to use, modify, and deploy it in clinical, academic, or commercial healthcare settings.
 
 ---
 
-Developed with ❤️ for reproductive medicine professionals worldwide by [WebOtApp Academy](https://github.com/webotapp-academy).
+Developed for reproductive medicine and embryology professionals worldwide by [WebOtApp Academy](https://github.com/webotapp-academy).
