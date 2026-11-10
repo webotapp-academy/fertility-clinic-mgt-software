@@ -53,7 +53,7 @@
             </div>
 
             <div style="padding: 1.5rem; background: #ffffff;">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--border-strong); border: 1px solid var(--border-strong);">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; background: transparent;">
                     <div class="metric-card">
                         <div class="metric-label">Clinical Pregnancy Rate (CPR)</div>
                         <div class="metric-value">66.7%</div>

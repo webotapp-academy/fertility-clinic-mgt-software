@@ -255,14 +255,14 @@
         .metrics-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-            gap: 1px;
-            background: var(--border-strong);
-            border: 1px solid var(--border-strong);
+            gap: 12px;
+            background: transparent;
             margin-bottom: 2rem;
         }
 
         .metric-card {
             background: #ffffff;
+            border: 1px solid var(--border-strong);
             padding: 1.1rem 1.35rem;
             display: flex;
             flex-direction: column;
