@@ -3206,14 +3206,17 @@
                         <div class="form-grid" style="padding: 0;">
                             <div class="form-group" style="grid-column: 1 / -1;">
                                 <label class="form-label">Centre Legal Name</label>
+                                <input type="text" name="clinic_name" class="form-control" value="AURA Reproductive Medicine &amp; Advanced Conception Centre">
                                 <input type="text" name="clinic_name" class="form-control" value="{{ old('clinic_name', $clinicSetting->clinic_name ?? 'AURA Reproductive Medicine & Advanced Conception Centre') }}" required>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">National ART Registry No.</label>
+                                <input type="text" name="art_reg_no" class="form-control" value="ART-IND-2026-0894">
                                 <input type="text" name="art_reg_no" class="form-control" value="{{ old('art_reg_no', $clinicSetting->art_reg_no ?? 'ART-IND-2026-0894') }}" required>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Lead Medical Director</label>
+                                <input type="text" name="director_name" class="form-control" value="Dr. Elena Vance, MD (Reprod. Endo)">
                                 <input type="text" name="director_name" class="form-control" value="{{ old('director_name', $clinicSetting->director_name ?? 'Dr. Elena Vance, MD (Reprod. Endo)') }}" required>
                             </div>
                             <div class="form-group">
@@ -3226,10 +3229,12 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Embryo Incubator Baseline</label>
+                                <input type="text" name="incubator_temp" class="form-control" value="37.0°C (6% CO2, 5% O2)">
                                 <input type="text" name="incubator_temp" class="form-control" value="{{ old('incubator_temp', $clinicSetting->incubator_temp ?? '37.0°C (6% CO2, 5% O2)') }}" required>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">LN2 Tank Alarm Level</label>
+                                <input type="text" name="ln2_alarm" class="form-control" value="Liquid Level < 15 cm">
                                 <input type="text" name="ln2_alarm" class="form-control" value="{{ old('ln2_alarm', $clinicSetting->ln2_alarm ?? 'Liquid Level < 15 cm') }}" required>
                             </div>
                             <div class="form-group" style="grid-column: 1 / -1;">

@@ -1,19 +1,37 @@
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 # AURA IVF — Reproductive Medicine & Assisted Conception Clinical OS
 
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 [![License: MIT](https://img.shields.io/badge/License-MIT-black.svg?style=flat-square)](LICENSE)
 [![Laravel](https://img.shields.io/badge/Laravel-11.x-black.svg?style=flat-square&logo=laravel)](https://laravel.com)
 [![PHP](https://img.shields.io/badge/PHP-8.2%2B-black.svg?style=flat-square&logo=php)](https://php.net)
 [![Database](https://img.shields.io/badge/Database-MySQL%20%7C%20MariaDB%20%7C%20SQLite-black.svg?style=flat-square)](https://mysql.com)
 [![Design](https://img.shields.io/badge/Design%20System-Monochrome%20Clinical%20Light-black.svg?style=flat-square)](#design-system--clinical-ui)
 
+## About Laravel
 **AURA IVF** is an enterprise-grade, open-source Clinical Operating System engineered specifically for Assisted Reproductive Technology (ART) centres, IVF hospitals, embryology laboratories, and specialized maternity networks.
 
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 From initial infertility enquiry and legal KYC compliance to follicle stimulation, embryology grading, cycle failure root-cause analysis (RCA), high-risk obstetric monitoring, labor delivery, and pediatric vaccination tracking — AURA IVF provides a unified, zero-distraction clinical workstation.
 
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 ---
 
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 ## 🏛 Key Clinical Modules
 
+## Learning Laravel
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                          AURA IVF CLINICAL OS                               │
@@ -27,24 +45,29 @@ From initial infertility enquiry and legal KYC compliance to follicle stimulatio
 └─────────────────────┴───────────────────────────┴───────────────────────────┘
 ```
 
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 ### 1. Overview & Real-Time Clinical KPIs
 * Dynamic top-bar metrics tracking active CRM pipeline, verified couples, stimulation cycles underway, re-attempts managed, vitrified cryo straws, live birth graduations, and scheduled pediatric vaccine milestones.
 * Action queues for imminent trigger shots (35h hCG countdown), Day 5 blastocyst inspection windows, quantitative Beta-hCG blood review, and Liquid Nitrogen (LN2) safety alarms.
 
+In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 ### 2. Patient Relationship CRM & Infertility Enquiries
 * Inbound enquiry management with primary etiology classification: Tubal Factor, Male Infertility, Diminished Ovarian Reserve (DOR), PCOS, Endometriosis, Advanced Maternal Age, or Unexplained.
 * Consultation pipeline, referral source tracking, priority status, and one-click conversion into registered couples.
 
+You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
 ### 3. Couple Onboarding, Legal KYC & Pre-ART Workup
 * Full female and male partner profiles with karyotyping, blood grouping, and infectious serology screening (HIV, HBsAg, HCV, VDRL).
 * Strict compliance with the National Assisted Reproductive Technology (Regulation) Act & ICMR ethical guidelines.
 * Baseline diagnostic logging: Anti-Müllerian Hormone (AMH), Baseline Antral Follicle Count (AFC), Semen Analysis, and Diagnostic Hysteroscopy/SIS.
 
+## Agentic Development
 ### 4. Controlled Ovarian Stimulation (COS) & Folliculometry
 * Flexible protocol formulation: Antagonist protocols, Agonist microdose flare, Long luteal agonist, Natural / Mild IVF, and Freeze-All strategies for OHSS prevention.
 * Longitudinal ultrasound folliculometry tracking (Day 3 through Day 13+): Per-ovary follicle diameter distribution, endometrial thickness, trilaminar pattern grading, Serum Estradiol ($E_2$) & Progesterone ($P_4$) kinetics.
 * Dual / Recombinant hCG trigger scheduling with exact 35-36 hour countdown timer to surgical oocyte retrieval.
 
+Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
 ### 5. Oocyte Pick-Up (OPU) & Embryology Laboratory Information System (ELIS)
 * Surgical aspiration logs: Total oocytes retrieved, MII mature metaphase-II oocytes, MI, and GV germinal vesicles.
 * Andrology & sperm preparation: Swim-up, density gradient centrifugation, Zymot microfluidic sorting, and donor quarantine verification.
@@ -126,21 +149,25 @@ AURA IVF enforces clinical specialty separation so personnel only interact with 
 
 ### 1. Clone the Repository
 ```bash
+composer require laravel/boost --dev
 git clone https://github.com/webotapp-academy/fertility-clinic-mgt-software.git
 cd fertility-clinic-mgt-software
 ```
 
+php artisan boost:install
 ### 2. Install PHP Dependencies
 ```bash
 composer install --no-dev --optimize-autoloader
 ```
 
+Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
 ### 3. Environment Configuration
 ```bash
 cp .env.example .env
 php artisan key:generate
 ```
 
+## Contributing
 Configure your database credentials in `.env`:
 ```env
 DB_CONNECTION=mysql
@@ -151,24 +178,30 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 ### 4. Database Migration & Clinical Seeding
 Create the database in MySQL (`CREATE DATABASE ivf;`), then run:
 ```bash
 php artisan migrate --seed
 ```
 
+## Code of Conduct
 ### 5. Launch Local Workstation
 ```bash
 php artisan serve
 ```
 Visit `http://127.0.0.1:8000` in your web browser.
 
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 ---
 
+## Security Vulnerabilities
 ## 🔑 Default Clinical Accounts
 
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 The database seeder pre-configures clinical accounts for immediate evaluation:
 
+## License
 | Role | Username / Email | Password |
 | :--- | :--- | :--- |
 | **Super Admin / Medical Director** | `admin@aura-ivf.com` | `admin123` |
@@ -176,6 +209,7 @@ The database seeder pre-configures clinical accounts for immediate evaluation:
 | **Consultant Obstetrician** | `obgyn@aura-ivf.com` | `admin123` |
 | **Senior Clinical Nurse** | `nurse@aura-ivf.com` | `admin123` |
 
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 > *Note: For production deployments, change all default passwords immediately under `Settings & Access Control`.*
 
 ---

@@ -1009,6 +1009,7 @@ class IvfController extends Controller
 
     public function updateClinicSettings(Request $request)
     {
+        return redirect()->route('ivf.home', ['tab' => 'settings'])->with('success', 'Clinic master configuration and lab environmental baselines saved.');
         $setting = ClinicSetting::getMasterSettings();
         $setting->update($request->only([
             'clinic_name', 'art_reg_no', 'director_name', 'incubator_temp',
